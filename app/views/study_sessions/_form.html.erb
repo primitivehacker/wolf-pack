@@ -1,0 +1,62 @@
+<%= form_for @study_session, :html => { :class => "form-horizontal study_session" } do |f| %>
+
+  <% if @study_session.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@study_session.errors.count, "error") %> prohibited this study_session from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @study_session.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:title) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :room_number, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :room_number, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:room_number) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :time, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :time, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:time) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tenant_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tenant_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tenant_id) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                study_sessions_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
