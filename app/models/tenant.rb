@@ -47,6 +47,13 @@ class Tenant < ActiveRecord::Base
       Member.create_org_admin(user)
       #
     end
+    
+    
+    def can_create_study_sessions?
+
+    (plan == 'free' && study_sessions.count < 1) || (plan == 'premium')
+    
+    end
 
    
 end

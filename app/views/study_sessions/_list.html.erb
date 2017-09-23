@@ -3,6 +3,9 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -57,6 +60,8 @@
 
 </div>
 
+<% if @study_sessions.size > 0 %>
+
 <table class="table table-striped">
 
 <thead>
@@ -99,7 +104,7 @@ tenant_study_session_path(study_session, tenant_id: @tenant.id), class: 'main-li
 
 edit_tenant_study_session_path(study_session, tenant_id: @tenant.id), :class => 'btn btn-default btn-xs' %>
 
-<%= link_to 'Edit Users', users_tenant_study_session_path(study_session, tenant_id: @tenant.id),
+<%= link_to 'Edit Users', tenant_study_session_path(study_session, tenant_id: @tenant.id),
 
 :class => 'btn btn-default btn-xs' %>
 
@@ -125,6 +130,20 @@ tenant_study_session_path(study_session, tenant_id: @tenant.id),
 
 </table>
 
-<%= link_to 'New study_session', new_tenant_study_session_path(tenant_id: @tenant.id),
+<% else %>
+
+<p class="lead">You don't have any study_sessions</p>
+
+<% end %>
+
+
+
+<% if (@tenant.can_create_study_sessions?) %>
+
+<%= link_to 'New Study Session',
+
+new_tenant_study_session_path(tenant_id: @tenant.id),
 
 :class => 'btn btn-primary' %>
+
+<% end %>

@@ -1,5 +1,7 @@
 class StudySessionsController < ApplicationController
   before_action :set_study_session, only: [:show, :edit, :update, :destroy]
+  before_action :set_tenant, only: [:show, :edit, :update, :destroy, :new, :create]
+  before_action :verify_tenant
 
   # GET /study_sessions
   # GET /study_sessions.json
@@ -28,11 +30,11 @@ class StudySessionsController < ApplicationController
 
     respond_to do |format|
       if @study_session.save
-        format.html { redirect_to @study_session, notice: 'Study session was successfully created.' }
-        format.json { render :show, status: :created, location: @study_session }
+        format.html { redirect_to root_url, notice: 'Study session was successfully created.' }
+      
       else
         format.html { render :new }
-        format.json { render json: @study_session.errors, status: :unprocessable_entity }
+      
       end
     end
   end
@@ -42,11 +44,11 @@ class StudySessionsController < ApplicationController
   def update
     respond_to do |format|
       if @study_session.update(study_session_params)
-        format.html { redirect_to @study_session, notice: 'Study session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @study_session }
+        format.html { redirect_to root_url, notice: 'Study session was successfully updated.' }
+    
       else
         format.html { render :edit }
-        format.json { render json: @study_session.errors, status: :unprocessable_entity }
+   
       end
     end
   end
@@ -56,7 +58,7 @@ class StudySessionsController < ApplicationController
   def destroy
     @study_session.destroy
     respond_to do |format|
-      format.html { redirect_to study_sessions_url, notice: 'Study session was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Study session was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,5 +72,23 @@ class StudySessionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def study_session_params
       params.require(:study_session).permit(:title, :room_number, :date, :time, :tenant_id)
+    end
+    
+    def set_tenant
+
+    @tenant = Tenant.find(params[:tenant_id])
+    
+    end
+    
+    def verify_tenant
+    
+    unless params[:tenant_id] == Tenant.current_tenant_id.to_s
+    
+    redirect_to :root,
+    
+    flash: { error: 'You are not authorized to access any organization other than your own'}
+    
+    end
+    
     end
 end
