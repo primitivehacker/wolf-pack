@@ -7,6 +7,8 @@ gem 'rails', '4.2.5'
 gem 'devise'
 
 gem 'milia'
+gem 'aws-sdk'
+gem 'stripe'
 
 gem 'twitter-bootstrap-rails'
 

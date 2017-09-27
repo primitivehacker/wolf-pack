@@ -33,4 +33,12 @@ module ApplicationHelper
   Tenant.find(tenant_id).name
   
   end
+  
+  def s3_link(tenant_id, note_key)
+
+  link_to note_key, "#{note_key}", class: 'main-link', target: 'new'
+  
+  end
+
+
 end

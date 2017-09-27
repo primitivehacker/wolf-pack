@@ -47,13 +47,12 @@
 
   <br />
 
-  <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
+  
+
+      <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 root_path, :class => 'btn btn-default' %>
-    </div>
-  </div>
+ 
 
 <% end %>

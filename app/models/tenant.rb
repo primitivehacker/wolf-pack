@@ -1,11 +1,20 @@
 class Tenant < ActiveRecord::Base
 
-  validates_presence_of :name
-
-  validates_uniqueness_of :name
-   acts_as_universal_and_determines_tenant
+  acts_as_universal_and_determines_tenant
+  
   has_many :members, dependent: :destroy
   has_many :study_sessions, dependent: :destroy
+  
+  def can_create_study_sessions?
+
+    (plan == 'free' && study_sessions.count < 1) || (plan == 'premium')
+    
+  end
+ 
+  validates_presence_of :name
+  validates_uniqueness_of :name
+   
+  
 
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
@@ -49,11 +58,7 @@ class Tenant < ActiveRecord::Base
     end
     
     
-    def can_create_study_sessions?
-
-    (plan == 'free' && study_sessions.count < 1) || (plan == 'premium')
     
-    end
 
    
 end

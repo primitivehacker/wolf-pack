@@ -66,7 +66,7 @@ class ConfirmationsController < Milia::ConfirmationsController
     
     # upon SUBMIT, processing will continue from update
     
-    end
+  end
     
     def after_confirmation_path_for(resource_name, resource)
     

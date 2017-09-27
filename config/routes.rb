@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
 
-
+  resources :charges
+  resources :notes
   resources :tenants do
-    resources :study_sessions
+    resources :study_sessions 
   end
+    
  
   resources :members
+  
   get 'home/index'
 
    root :to => "home#index"

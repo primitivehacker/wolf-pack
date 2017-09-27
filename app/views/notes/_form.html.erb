@@ -1,0 +1,47 @@
+<%= form_for @note, :html => { :class => "form-horizontal note" } do |f| %>
+
+  <% if @note.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @note.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+ 
+  </div>
+
+  
+  <div class="control-group">
+
+    <%= f.label :upload, value: 'File to upload', :class => 'control-label' %>
+    
+    <div class="controls">
+    
+    <%= f.file_field :upload, :class => 'form-control' %>
+    
+    </div>
+  
+  </div>
+
+
+      <%= f.hidden_field :study_session_id %>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+          tenant_study_session_path(tenant_id: Tenant.current_tenant_id, id: @note.study_session_id), :class => 'btn btn-default' %>
+
+
+
+<% end %>

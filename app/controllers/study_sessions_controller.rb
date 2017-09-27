@@ -12,6 +12,7 @@ class StudySessionsController < ApplicationController
   # GET /study_sessions/1
   # GET /study_sessions/1.json
   def show
+    @study_session
   end
 
   # GET /study_sessions/new

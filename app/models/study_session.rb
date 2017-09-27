@@ -1,6 +1,7 @@
 class StudySession < ActiveRecord::Base
   belongs_to :tenant
   validates_uniqueness_of :title
+  has_many :notes, dependent: :destroy
 
     validate :free_plan_can_only_have_one_study_session
     
