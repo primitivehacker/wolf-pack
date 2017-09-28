@@ -3,7 +3,7 @@ class CreatePayments < ActiveRecord::Migration
     create_table :payments do |t|
       t.string :email
       t.string :token
-      t.integer :user_id
+      t.belongs_to :tenant, index: true, foreign_key: true
 
       t.timestamps null: false
     end
