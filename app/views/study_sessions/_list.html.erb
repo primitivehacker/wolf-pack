@@ -71,7 +71,7 @@
 
 <tr>
 
-<th><%= model_class.human_attribute_name(:title) %></th>
+<th><%= model_class.human_attribute_name(:topic_of_the_day) %></th>
 
 <th><%= model_class.human_attribute_name(:room_number) %></th>
 
@@ -135,7 +135,7 @@ tenant_study_session_path(study_session, tenant_id: @tenant.id),
 
 <% else %>
 
-<p class="lead">You don't have any study_sessions</p>
+<p class="lead">You don't have any study sessions yet!</p>
 
 <% end %>
 

@@ -27,9 +27,9 @@ Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
 
       <div class="form-group col-md-6 no-left-padding">
       
-      <%= w.label :name, 'Organization' %>
+      <%= w.label :name, 'Team Captain' %>
       
-      <span class='description'>(Unique name for your group or organization for the new account)</span>
+      <span class='description'>(Enter your name you'd like to go by)</span>
       
       <%= w.text_field :name, required: true, class: "form-control" %>
       
