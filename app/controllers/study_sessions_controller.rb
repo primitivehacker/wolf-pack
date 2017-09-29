@@ -67,6 +67,8 @@ class StudySessionsController < ApplicationController
     end
   end
   
+
+  
   
   def users
 
