@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   resources :user_study_sessions
-  resources :charges
+  
   resources :notes
   resources :tenants do
     resources :study_sessions do

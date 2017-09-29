@@ -8,5 +8,6 @@ class ApplicationController < ActionController::Base
      ##    but you can override these if you wish to handle directly
   rescue_from ::Milia::Control::MaxTenantExceeded, :with => :max_tenants
   rescue_from ::Milia::Control::InvalidTenantAccess, :with => :invalid_tenant
+  
 
 end
