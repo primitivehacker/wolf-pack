@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
 
+  resources :user_study_sessions
   resources :charges
   resources :notes
   resources :tenants do
-    resources :study_sessions 
+    resources :study_sessions do
+      get 'users', on: :member
+
+      put 'add_user', on: :member
+    
+    end
   end
     
  

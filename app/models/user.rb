@@ -7,5 +7,15 @@ class User < ActiveRecord::Base
   acts_as_universal_and_determines_account
   has_one :member, :dependent => :destroy
   has_one :payment
+  has_many :user_study_sessions
+  has_many :study_sessions, through: :user_study_sessions
+
+
   accepts_nested_attributes_for :payment
+  
+  def is_admin?
+
+  is_admin
+  
+  end
 end

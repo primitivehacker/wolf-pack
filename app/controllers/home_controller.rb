@@ -16,10 +16,12 @@ class HomeController < ApplicationController
     end
     
     @tenant = Tenant.current_tenant
-    @study_sessions = StudySession.by_plan_and_tenant(@tenant.id)
+    #@study_sessions = StudySession.by_plan_and_tenant(@tenant.id)
+    @study_sessions = StudySession.by_user_plan_and_tenant(@tenant.id, current_user)
     
     params[:tenant_id] = @tenant.id
     
     end
   end
+  
 end

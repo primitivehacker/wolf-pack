@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927222526) do
+ActiveRecord::Schema.define(version: 20170929005924) do
 
   create_table "members", force: :cascade do |t|
     t.integer  "tenant_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170927222526) do
     t.string   "title"
     t.string   "room_number"
     t.date     "date"
-    t.datetime "time"
+    t.string   "time"
     t.integer  "tenant_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 20170927222526) do
 
   add_index "tenants_users", ["tenant_id", "user_id"], name: "index_tenants_users_on_tenant_id_and_user_id"
 
+  create_table "user_study_sessions", force: :cascade do |t|
+    t.integer  "study_session_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "user_study_sessions", ["study_session_id"], name: "index_user_study_sessions_on_study_session_id"
+  add_index "user_study_sessions", ["user_id"], name: "index_user_study_sessions_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                        default: "",    null: false
     t.string   "encrypted_password",           default: "",    null: false
@@ -104,6 +114,7 @@ ActiveRecord::Schema.define(version: 20170927222526) do
     t.integer  "tenant_id"
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.boolean  "is_admin",                     default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -33,6 +33,11 @@
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
 
       edit_tenant_study_session_path(study_session: @study_session, tenant: @study_session.tenant_id), :class => 'btn btn-default' %>
+      
+<%= link_to 'Edit Study Session Users',
+
+users_tenant_study_session_path(tenant_id: @study_session.tenant_id, id: @study_session.id), :class => 'btn btn-default' %>
+
 
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
 
