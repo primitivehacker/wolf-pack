@@ -84,7 +84,7 @@ class StudySessionsController < ApplicationController
   
   def add_user
   
-  @study_session_user = Userstudy_session.new(user_id: params[:user_id], study_session_id: @study_session.id)
+  @study_session_user = UserStudy_Session.new(user_id: params[:user_id], study_session_id: @study_session.id)
   
   respond_to do |format|
   
@@ -94,7 +94,7 @@ class StudySessionsController < ApplicationController
   
   tenant_id: @study_session.tenant_id),
   
-  notice: 'User was successfully added to study_session' }
+  notice: 'User was successfully added to study session' }
   
   else
   
@@ -102,7 +102,7 @@ class StudySessionsController < ApplicationController
   
   tenant_id: @study_session.tenant_id),
   
-  error: 'User was not added to study_session' }
+  error: 'User was not added to study session' }
   
   end
   

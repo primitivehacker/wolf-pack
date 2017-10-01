@@ -5,10 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   acts_as_universal_and_determines_account
+  has_one :member
   has_many :members, :dependent => :destroy
+  
   has_one :payment
   has_many :user_study_sessions
   has_many :study_sessions, through: :user_study_sessions
+  
+
 
 
   accepts_nested_attributes_for :payment
@@ -18,4 +22,7 @@ class User < ActiveRecord::Base
   is_admin
   
   end
+
+    
+    
 end
