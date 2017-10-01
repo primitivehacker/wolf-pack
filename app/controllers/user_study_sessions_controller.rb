@@ -28,7 +28,7 @@ class UserStudySessionsController < ApplicationController
 
     respond_to do |format|
       if @user_study_session.save
-        format.html { redirect_to @user_study_session, notice: 'User study session was successfully created.' }
+        format.html { redirect_to @user_study_session, notice: 'User study_session was successfully created.' }
         format.json { render :show, status: :created, location: @user_study_session }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class UserStudySessionsController < ApplicationController
   def update
     respond_to do |format|
       if @user_study_session.update(user_study_session_params)
-        format.html { redirect_to @user_study_session, notice: 'User study session was successfully updated.' }
+        format.html { redirect_to @user_study_session, notice: 'User study_session was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_study_session }
       else
         format.html { render :edit }
@@ -53,29 +53,20 @@ class UserStudySessionsController < ApplicationController
 
   # DELETE /user_study_sessions/1
   # DELETE /user_study_sessions/1.json
-  
   def destroy
-
-  @user_study_session.destroy
-  
-  respond_to do |format|
-  
-  format.html { redirect_to users_tenant_study_session_url(id: @user_study_session.study_session_id,
-  
-  tenant_id: @user_study_session.study_session.tenant_id),
-  
-  notice: 'User was successfully removed from the study session' }
-  
-  format.json { head :no_content }
-  
-  end
-  
+    @user_study_session.destroy
+    respond_to do |format|
+      format.html { redirect_to users_tenant_study_session_url(id: @user_study_session.study_session_id,
+        tenant_id: @user_study_session.study_session.tenant_id),
+        notice: 'User was successfully removed from the study_session' }
+      format.json { head :no_content }
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_study_session
-      @user_study_session = UserStudySession.find(params[:id])
+      @user_study_session = UserStudySessionroject.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

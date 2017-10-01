@@ -13,7 +13,7 @@ class StudySessionsController < ApplicationController
   # GET /study_sessions/1
   # GET /study_sessions/1.json
   def show
-    @study_session
+    #@study_session
   end
 
   # GET /study_sessions/new
@@ -84,7 +84,7 @@ class StudySessionsController < ApplicationController
   
   def add_user
   
-  @study_session_user = UserStudy_Session.new(user_id: params[:user_id], study_session_id: @study_session.id)
+  @study_session_user = UserStudySession.new(user_id: params[:user_id], study_session_id: @study_session.id)
   
   respond_to do |format|
   
