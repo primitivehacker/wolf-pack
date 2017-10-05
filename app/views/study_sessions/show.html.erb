@@ -39,15 +39,13 @@
 users_tenant_study_session_path(tenant_id: @study_session.tenant_id, id: @study_session.id), :class => 'btn btn-default' %>
 
 
+
+
+
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-
-tenant_study_session_path(@study_session, @study_session.tenant_id),
-
-:method => 'delete',
-
-:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm",
-
-:default => 'Are you sure?')) },
-
-:class => 'btn btn-danger' %>
+              tenant_study_session_path(@study_session, @study_session.tenant_id),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", 
+              :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
 
