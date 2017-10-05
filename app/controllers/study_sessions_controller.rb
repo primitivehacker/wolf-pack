@@ -62,6 +62,7 @@ class StudySessionsController < ApplicationController
   def users
     @study_session_users = (@study_session.users + (User.where(tenant_id: @tenant.id, is_admin: true))) - [current_user]
     @other_users = @tenant.users.where(is_admin: false) - (@study_session_users + [current_user])
+    
   end
   
   def add_user
@@ -86,7 +87,7 @@ class StudySessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def study_session_params
-      params.require(:study_session).permit(:title, :details, :expected_completion_date, :tenant_id)
+      params.require(:study_session).permit(:title, :room_number, :date, :time, :tenant_id)
     end
   
     def set_tenant
